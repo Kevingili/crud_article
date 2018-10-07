@@ -20,6 +20,11 @@ class ArticleController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository): Response
     {
+        // function without params
+        // $repo = $this->getDoctrine()->getRepository(Article::class);
+        // $articles = $repo->findAll();
+        // return $this->render('article/index.html.twig', ['articles' => $articles]);
+
         return $this->render('article/index.html.twig', ['articles' => $articleRepository->findAll()]);
     }
 
