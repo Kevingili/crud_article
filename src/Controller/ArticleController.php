@@ -20,11 +20,6 @@ class ArticleController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository): Response
     {
-        // function without params
-        // $repo = $this->getDoctrine()->getRepository(Article::class);
-        // $articles = $repo->findAll();
-        // return $this->render('article/index.html.twig', ['articles' => $articles]);
-
         return $this->render('article/index.html.twig', ['articles' => $articleRepository->findAll()]);
     }
 
@@ -70,7 +65,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
+            return $this->redirectToRoute('article_edit', ['id' => $article->getId()]);
         }
 
         return $this->render('article/edit.html.twig', [

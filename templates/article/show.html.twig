@@ -16,15 +16,25 @@
                 <td>{{ article.name }}</td>
             </tr>
             <tr>
-                <th>Content</th>
-                <td>{{ article.content }}</td>
+                <th>Description</th>
+                <td>{{ article.description }}</td>
+            </tr>
+            <tr>
+                <th>Tags</th>
+                <td>
+                    {% for tag in article.tags %}
+                        <span class="badge badge-primary">{{ tag.name }}</span><br>
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('article_index') }}">back to list</a>
+    <a href="{{ path('article_index') }}" class="btn btn-secondary">back to list</a>
 
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+    <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-warning">edit</a>
+
+    <br><br>
 
     {{ include('article/_delete_form.html.twig') }}
 {% endblock %}
